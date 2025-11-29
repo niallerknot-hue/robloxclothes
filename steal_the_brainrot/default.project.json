@@ -1,0 +1,15 @@
+{
+  "name": "StealTheBrainrot",
+  "tree": {
+    "$className": "DataModel",
+    "ServerScriptService": {
+      "$path": "src/server"
+    },
+    "StarterPlayer": {
+      "$path": "src/client"
+    },
+    "ReplicatedStorage": {
+      "$path": "src/shared"
+    }
+  }
+}

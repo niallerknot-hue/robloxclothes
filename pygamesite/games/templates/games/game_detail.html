@@ -1,0 +1,49 @@
+{% extends 'games/base.html' %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto bg-gray-800 rounded-lg shadow-xl overflow-hidden border border-gray-700">
+    {% if game.cover_image %}
+    <img src="{{ game.cover_image.url }}" alt="{{ game.title }}" class="w-full h-64 object-cover">
+    {% endif %}
+
+    <div class="p-8">
+        <div class="flex justify-between items-start mb-6">
+            <div>
+                <h1 class="text-4xl font-bold text-green-400 mb-2">{{ game.title }}</h1>
+                <p class="text-xl text-gray-400">by {{ game.developer }}</p>
+            </div>
+            <span class="bg-gray-700 px-3 py-1 rounded text-sm uppercase">{{ game.get_game_type_display }}</span>
+        </div>
+
+        <div class="prose prose-invert max-w-none mb-8">
+            <h3 class="text-xl font-bold text-gray-200 mb-2">Description</h3>
+            <p class="text-gray-300 whitespace-pre-line">{{ game.description }}</p>
+        </div>
+
+        <div class="flex flex-wrap gap-4">
+            {% if game.game_file %}
+            <a href="{{ game.game_file.url }}" download class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded font-bold flex items-center gap-2">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                Download Game
+            </a>
+            {% endif %}
+
+            {% if game.game_url %}
+            <a href="{{ game.game_url }}" target="_blank" rel="noopener noreferrer" class="px-6 py-3 bg-gray-700 hover:bg-gray-600 text-white rounded font-bold flex items-center gap-2">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                Visit Website / Source
+            </a>
+            {% endif %}
+        </div>
+
+        {% if game.game_type == 'web' and game.game_url %}
+        <div class="mt-8">
+             <h3 class="text-xl font-bold text-gray-200 mb-4">Play Online</h3>
+             <div class="aspect-w-16 aspect-h-9 bg-black rounded overflow-hidden">
+                 <iframe src="{{ game.game_url }}" class="w-full h-96 border-0" allowfullscreen></iframe>
+             </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

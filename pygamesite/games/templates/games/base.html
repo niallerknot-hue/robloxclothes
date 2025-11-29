@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}PyGameSite{% endblock %}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background-color: #1a202c; /* gray-900 */
+            color: #e2e8f0; /* gray-200 */
+        }
+    </style>
+</head>
+<body class="font-sans antialiased min-h-screen flex flex-col">
+    <nav class="bg-gray-800 p-4 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="{% url 'game_list' %}" class="text-xl font-bold text-green-400">PyGameHub</a>
+            <div>
+                <a href="{% url 'game_list' %}" class="px-3 py-2 hover:text-green-400">Home</a>
+                <a href="{% url 'game_upload' %}" class="px-3 py-2 bg-green-500 hover:bg-green-600 text-white rounded transition">Upload Game</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto p-4 flex-grow">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer class="bg-gray-800 p-4 mt-8">
+        <div class="container mx-auto text-center text-gray-500">
+            &copy; 2023 PyGameHub. All rights reserved.
+        </div>
+    </footer>
+</body>
+</html>

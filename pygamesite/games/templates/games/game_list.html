@@ -1,0 +1,36 @@
+{% extends 'games/base.html' %}
+
+{% block content %}
+<div class="mb-8 text-center">
+    <h1 class="text-4xl font-bold mb-4">Welcome to PyGameHub</h1>
+    <p class="text-xl text-gray-400">The modern home for Python-based games.</p>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    {% for game in games %}
+    <div class="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 border border-gray-700">
+        {% if game.cover_image %}
+        <img src="{{ game.cover_image.url }}" alt="{{ game.title }}" class="w-full h-48 object-cover">
+        {% else %}
+        <div class="w-full h-48 bg-gray-700 flex items-center justify-center text-gray-500">
+            No Image
+        </div>
+        {% endif %}
+        <div class="p-4">
+            <h2 class="text-2xl font-bold mb-2 text-green-400">{{ game.title }}</h2>
+            <p class="text-sm text-gray-400 mb-2">by {{ game.developer }}</p>
+            <p class="text-gray-300 mb-4 line-clamp-3">{{ game.description }}</p>
+            <div class="flex justify-between items-center">
+                <span class="bg-gray-700 px-2 py-1 rounded text-xs uppercase">{{ game.get_game_type_display }}</span>
+                <a href="{% url 'game_detail' game.pk %}" class="text-green-400 hover:underline">View Details &rarr;</a>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <div class="col-span-3 text-center text-gray-500 py-12">
+        <p>No games found yet. Be the first to upload one!</p>
+        <a href="{% url 'game_upload' %}" class="mt-4 inline-block px-6 py-2 bg-green-500 hover:bg-green-600 text-white rounded">Upload Now</a>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,24 @@
+SCREEN_WIDTH = 1280
+SCREEN_HEIGHT = 720
+FPS = 60
+
+# Colors
+WHITE = (255, 255, 255)
+BLACK = (0, 0, 0)
+RED = (255, 0, 0)
+GREEN = (0, 255, 0)
+BLUE = (0, 0, 255)
+GRAY = (100, 100, 100)
+DARK_GRAY = (50, 50, 50)
+YELLOW = (255, 255, 0)
+PURPLE = (128, 0, 128)
+
+# Game States
+STATE_MENU = "menu"
+STATE_LOBBY = "lobby"
+STATE_GAME = "game"
+STATE_SHOP = "shop"
+STATE_GAMEOVER = "gameover"
+
+# Map
+TILE_SIZE = 40

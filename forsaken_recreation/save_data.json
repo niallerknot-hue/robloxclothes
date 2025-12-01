@@ -1,0 +1,5 @@
+{
+    "coins": 100,
+    "unlocked_skins": ["default"],
+    "current_skins": {"p1": "default", "p2": "default"}
+}
